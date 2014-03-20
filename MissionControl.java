@@ -8,8 +8,9 @@ class Rover
 	private int heading;
 	private String movement;
 	// Need a better way to do this
-	private char headings [] = {'N', 'E', 'S', 'W'};
-	private int step [] = {1, 1, -1, -1};// Value to move depends on direction
+	private final char headings [] = {'N', 'E', 'S', 'W'};
+	// Value to move depends on direction from above array
+	private final int step [] = {1, 1, -1, -1};
 
 	// Constructor to initialise the new object created
 	public Rover(int xc, int yc, int h, String m)
