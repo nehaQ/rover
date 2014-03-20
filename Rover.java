@@ -1,3 +1,5 @@
+/* Class Rover is a representation of a rover. At any given time it has a set of coordinates (x,y) associated with it along with the direction (NSEW) that it is facing. Given a command from the MissionControl class it can either turn left(L), turn right (R) or move forward (L). If an errorneous command is given an error message is displayed. It also has a method by which its current position and heading can be displayed. */
+
 public class Rover 
 {
 	private int x;
@@ -44,7 +46,7 @@ public class Rover
 				break;
 			}
 			default: // Generate error event
-				System.out.error("Not a valid command");
+				System.err.println("Not a valid command");
 		}
 	}
 

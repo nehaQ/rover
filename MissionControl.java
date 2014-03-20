@@ -1,3 +1,5 @@
+/* Class MissionControl reads the commands given from the user and interprets them to drive the rover which is represented as an object of the Rover class */
+
 import java.util.Scanner; // Scanner makes it easier to parse strings
 import java.lang.Object;
 
