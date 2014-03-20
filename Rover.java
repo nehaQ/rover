@@ -1,4 +1,9 @@
-/* Class Rover is a representation of a rover. At any given time it has a set of coordinates (x,y) associated with it along with the direction (NSEW) that it is facing. Given a command from the MissionControl class it can either turn left(L), turn right (R) or move forward (L). If an errorneous command is given an error message is displayed. It also has a method by which its current position and heading can be displayed. */
+/* Class Rover is a representation of a rover. At any given time it has a set 
+of coordinates (x,y) associated with it along with the direction (NSEW) that 
+it is facing. Given a command from the MissionControl class it can either turn 
+left(L), turn right (R) or move forward (L). If an errorneous command is given 
+an error message is displayed. It also has a method by which its current 
+position and heading can be displayed. */
 
 public class Rover 
 {
@@ -9,7 +14,8 @@ public class Rover
 	// Need a better way to do this
 	private final char headings [] = {'N', 'E', 'S', 'W'};
 	// Value to move depends on direction from above array
-	private final int step [] = {1, 1, -1, -1};
+	private final int stepX [] = {0, 1, 0, -1};
+	private final int stepY [] = {1, 0, -1, 0};
 
 	// Constructor to initialise the new object created
 	public Rover(int xc, int yc, int h, String m)
@@ -21,7 +27,7 @@ public class Rover
 	}
 
 	// Move the rover according to the given condition
-	public void moveRover(char move)
+	private void moveRover(char move)
 	{
 		switch (move) 
 		{
@@ -39,10 +45,9 @@ public class Rover
 			}
 			case 'M':
 			{
-				if(heading%2 == 0) // NS direction
-					y += step[heading];
-				else			  // EW direction
-					x+= step[heading];
+				// NS direction
+				y += stepY[heading];
+				x += stepX[heading];
 				break;
 			}
 			default: // Generate error event
@@ -50,9 +55,10 @@ public class Rover
 		}
 	}
 
-	public String getMovement()
+	public void roverMoves()
 	{
-		return movement;
+		for(char move : movement.toCharArray())
+			moveRover(move);
 	}
 	
 	public void display()

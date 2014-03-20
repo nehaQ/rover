@@ -1,4 +1,5 @@
-/* Class MissionControl reads the commands given from the user and interprets them to drive the rover which is represented as an object of the Rover class */
+/* Class MissionControl reads the commands given from the user and interprets
+ them to drive the rover which is represented as an object of the Rover class */
 
 import java.util.Scanner; // Scanner makes it easier to parse strings
 import java.lang.Object;
@@ -52,11 +53,7 @@ public class MissionControl
 		// Start simulating robot movement
 		for(Rover current : roversOnMars)
 		{
-			movement = current.getMovement();
-			for (char move : movement.toCharArray())
-			{
-				current.moveRover(move);
-			}
+			current.roverMoves();
 			// Display its final position
 			current.display();
 		}	
