@@ -59,22 +59,33 @@ public class MissionControl
 		}	
 	}
 }
-// Clear the text box and radio msg if chosen
-function clearText()
+function submitButton()
 {
-  document.getElementById('leave_message').value = "";
-  var radios = document.getElementsByName('pick_message');
-  for(var i=0; i<radios.length; i++)
-    if(radios[i].checked) break;
-  chosenMessage = i+1;
-}
-
-// Clear radio and text in textarea is chosen
-function clearRadio()
-{
-  var radios = document.getElementsByName('pick_message');
-  var checked = false;
-  for(var i=0; i<radios.length; i++)
-    if(radios[i].checked) {radios[i].checked = false; break;}
-  chosenMessage = 'leave_message';
+    chosenMessage = document.getElementById(chosenMessage).value;
+    chosenTime = document.getElementById(chosenTime).value;  
+    time_unit = "timer";
+    // Start the db 
+    // Code is from W3 school http://www.w3schools.com/php/php_ajax_database.asp
+    if (window.XMLHttpRequest)
+    {
+      // code for IE7+, Firefox, Chrome, Opera, Safari
+      xmlhttp = new XMLHttpRequest();
+    }
+    else
+    { 
+      // code for IE6, IE5
+      xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    
+    xmlhttp.onreadystatechange=function()
+    {
+      if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+      {
+        //alert("Sent to server");
+      }
+    }
+    
+    xmlhttp.open("GET","message.php?msg="+chosenMessage+"&timet="+chosenTime+"&unit="+time_unit,true);
+    xmlhttp.send();
+    window.location.href="visitor.html";
 }
