@@ -59,3 +59,22 @@ public class MissionControl
 		}	
 	}
 }
+// Clear the text box and radio msg if chosen
+function clearText()
+{
+  document.getElementById('leave_message').value = "";
+  var radios = document.getElementsByName('pick_message');
+  for(var i=0; i<radios.length; i++)
+    if(radios[i].checked) break;
+  chosenMessage = i+1;
+}
+
+// Clear radio and text in textarea is chosen
+function clearRadio()
+{
+  var radios = document.getElementsByName('pick_message');
+  var checked = false;
+  for(var i=0; i<radios.length; i++)
+    if(radios[i].checked) {radios[i].checked = false; break;}
+  chosenMessage = 'leave_message';
+}
